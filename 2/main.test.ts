@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { max, sum, sumBy } from 'lodash'
 
-const samplePart1 = readFileSync('2/sample-part1.txt').toString()
+const sample = readFileSync('2/sample.txt').toString()
 const input = readFileSync('2/input.txt').toString()
 
 interface Draw {
@@ -67,7 +67,7 @@ describe('Day 2: Cube Conundrum', () => {
 
   describe('Part 1', () => {
     test('sample input', () => {
-      const games = samplePart1.split("\n").map(line => parseGameRecord(line))
+      const games = sample.split("\n").map(line => parseGameRecord(line))
       const possibleGames = games.filter(game => isPossible(game, 12, 13, 14))
 
       expect(sumBy(possibleGames, 'id')).toBe(8)
@@ -97,7 +97,7 @@ describe('Day 2: Cube Conundrum', () => {
 
   describe('Part 2', () => {
     test('sample input', () => {
-      const games = samplePart1.split("\n").map(line => parseGameRecord(line))
+      const games = sample.split("\n").map(line => parseGameRecord(line))
       const powers = games
         .map(game => fewestCubes(game))
         .map(cubes => power(cubes))
